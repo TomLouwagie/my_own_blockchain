@@ -1,4 +1,6 @@
 "use strict";
+// TO DO
+// Add checking of amount in the transaction
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -102,25 +104,7 @@ class Wallet {
 const satoshi = new Wallet();
 const bob = new Wallet();
 const alice = new Wallet();
-satoshi.sendMoney(50, bob.publicKey);
+satoshi.sendMoney(1000, bob.publicKey);
 bob.sendMoney(23, alice.publicKey);
 alice.sendMoney(5, bob.publicKey);
 console.log(Chain.instance);
-// typescript version
-const newCrypto = async () => {
-    crypto.generateKeyPair('rsa', {
-        modulusLength: 1024,
-        publicKeyEncoding: {
-            type: 'spki',
-            format: 'pem'
-        },
-        privateKeyEncoding: {
-            type: 'pkcs8',
-            format: 'pem'
-        }
-    }, (err, publicKey, privateKey) => {
-        if (err)
-            throw err;
-        return { publicKey, privateKey };
-    });
-};
